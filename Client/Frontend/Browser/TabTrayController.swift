@@ -85,6 +85,10 @@ private class TabCell: UITableViewCell {
         setupFrames()
 
         self.animator.originalCenter = CGPoint(x: UIScreen.mainScreen().bounds.width / 2, y: TabTrayControllerUX.CellHeight / 2)
+
+        self.accessibilityCustomActions = [
+            UIAccessibilityCustomAction(name: NSLocalizedString("Close", comment: ""), target: self.animator, selector: "closeWithoutGesture")
+        ]
     }
 
     func setupFrames() {
@@ -278,6 +282,11 @@ private class SwipeAnimator: NSObject {
                 }
         })
     }
+
+	@objc func closeWithoutGesture() -> Bool {
+		close(velocity: CGPointMake(-self.ux.minExitVelocity, 0), actualVelocity: self.ux.minExitVelocity)
+		return true
+	}
 }
 
 extension SwipeAnimator: UIGestureRecognizerDelegate {
