@@ -295,9 +295,6 @@ class TabTrayController: UIViewController, UITabBarDelegate, UITableViewDelegate
     var navBar: UINavigationBar!
 
     override func viewDidLoad() {
-        view.isAccessibilityElement = true
-        view.accessibilityLabel = NSLocalizedString("Tabs Tray", comment: "Accessibility label for the Tabs Tray view.")
-
         navBar = UINavigationBar()
 
         navBar.barTintColor = TabTrayControllerUX.ToolbarBarTintColor
